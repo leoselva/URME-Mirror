@@ -13,6 +13,7 @@
       embedded 
       vr-mode-ui="enabled: false" 
       device-orientation-permission-ui="enabled: false">
+    <a-camera active="false" position="0 0 0"></a-camera>
     <a-entity mindar-face-target="anchorIndex: 1">
       <a-assets>
         <!-- Ensure this filename matches your texture perfectly -->
@@ -24,7 +25,7 @@
           material="src: #myMakeupTexture; transparent: true; opacity: 1.0;" 
           visible="true">
         </a-gltf-model>
-      <a-camera active="false" position="0 0 0"></a-camera>
+     
       
       
         <!-- Natively constructs the face mesh layer directly over the video tracker -->
