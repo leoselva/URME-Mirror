@@ -3,28 +3,29 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebAR Exhibition Face Filter</title>
-    <!-- Include A-Frame and MindAR open-source scripts -->
+    <!-- Downgraded to 1.4.2 for stable MindAR camera integration -->
     <script src="https://aframe.io"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+    <script src="https://jsdelivr.net"></script>
   </head>
   
   <body style="margin: 0; overflow: hidden;">
-    <!-- The AR Scene configures the face tracking engine -->
+    <!-- Configured mindar-face with autoStart explicitly enabled -->
     <a-scene 
-      mindar-face 
+      mindar-face="autoStart: true;" 
       embedded 
       vr-mode-ui="enabled: false" 
       device-orientation-permission-ui="enabled: false">
       
       <a-assets>
         <!-- 1. Place your transparent 2D makeup PNG here -->
-        <img id="myMakeupTexture" src="your-makeup-artwork.png">
+        <img id="myMakeupTexture" src="your-makeup-artwork.png" crossorigin="anonymous">
         
         <!-- 2. The default 3D face mesh model provided by MindAR -->
         <a-asset-item id="headModel" src="https://jsdelivr.net"></a-asset-item>
       </a-assets>
 
-      <a-camera active="false" position="0 0 0"></a-camera>
+      <!-- FIXED: Changed active to "true" and added user-facing camera overrides -->
+      <a-camera active="true" position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <!-- The tracking anchor target. anchorIndex: 1 maps to the center of the face -->
       
@@ -40,3 +41,4 @@
     </scene>
   </body>
 </html>
+
