@@ -17,13 +17,16 @@
 	container: document.querySelector("#container"),
       });
       const {renderer, scene, camera} = mindarThree;
-      const light = new THREE.AmbientLight( 0x404040 );
+      const light = new THREE.AmbientLight( 0xFFFFFF, 2.3 );
       scene.add(light);
       const faceMesh = mindarThree.addFaceMesh();
       const texture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/leoselva/LSassets/4a9cfd2dc341c0975c94846ca39ce089a0653358/urme_overlay.png');
       faceMesh.material.map = texture;
       faceMesh.material.transparent = true;
       faceMesh.material.needsUpdate = true;
+      faceMesh.material.flatShading = true;
+       faceMesh.alphaToCoverage = true;
+       faceMesh.dither = true;
       scene.add(faceMesh);
       const start = async() => {
 	await mindarThree.start();
