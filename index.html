@@ -1,44 +1,18 @@
 <!DOCTYPE html>
+
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URME Mirror</title>
-    <!-- Downgraded to 1.4.2 for stable MindAR camera integration -->
-    <script src="https://aframe.io"></script>
-   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.1/dist/mindar-face-aframe.prod.js" type="module"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
   </head>
-  
-  <body style="margin: 0; overflow: hidden;">
-    <!-- Configured mindar-face with autoStart explicitly enabled -->
-    <a-scene 
-      mindar-face="autoStart: true;" 
-      embedded 
-      vr-mode-ui="enabled: false" 
-      device-orientation-permission-ui="enabled: false">
-      
-      <a-assets>
-        <!-- 1. Place your transparent 2D makeup PNG here -->
-        <img id="myMakeupTexture" src="your-makeup-artwork.png" crossorigin="anonymous">
-        
-        <!-- 2. The default 3D face mesh model provided by MindAR -->
-        <a-asset-item id="headModel" src="https://jsdelivr.net"></a-asset-item>
-      </a-assets>
-
-      <!-- FIXED: Changed active to "true" and added user-facing camera overrides -->
-      <a-camera active="true" position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <!-- The tracking anchor target. anchorIndex: 1 maps to the center of the face -->
-      
-        
-        <!-- This maps your 2D texture seamlessly across the visitor's face -->
-        <a-gltf-model 
-          src="#headModel" 
-          material="src: #myMakeupTexture; transparent: true; opacity: 0.9;" 
-          visible="true">
-        </a-gltf-model>
-        
-      
-    </scene>
+  <body>
+    <a-scene mindar-face embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-camera active="false" position="0 0 0"></a-camera>
+      <a-entity mindar-face-target="anchorIndex: 1">
+	<a-sphere color="green" radius="0.1"></a-sphere>
+      </a-entity>
+    </a-scene>
   </body>
 </html>
 
