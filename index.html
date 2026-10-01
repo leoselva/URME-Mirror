@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAR Exhibition Face Filter</title>
+    <!-- Include A-Frame and MindAR open-source scripts -->
+    <script src="https://aframe.io"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+  </head>
+  
+  <body style="margin: 0; overflow: hidden;">
+    <!-- The AR Scene configures the face tracking engine -->
+    <a-scene 
+      mindar-face 
+      embedded 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+      
+      <a-assets>
+        <!-- 1. Place your transparent 2D makeup PNG here -->
+        <img id="myMakeupTexture" src="your-makeup-artwork.png">
+        
+        <!-- 2. The default 3D face mesh model provided by MindAR -->
+        <a-asset-item id="headModel" src="https://jsdelivr.net"></a-asset-item>
+      </a-assets>
+
+      <a-camera active="false" position="0 0 0"></a-camera>
+
+      <!-- The tracking anchor target. anchorIndex: 1 maps to the center of the face -->
+      
+        
+        <!-- This maps your 2D texture seamlessly across the visitor's face -->
+        <a-gltf-model 
+          src="#headModel" 
+          material="src: #myMakeupTexture; transparent: true; opacity: 0.9;" 
+          visible="true">
+        </a-gltf-model>
+        
+      
+    </scene>
+  </body>
+</html>
