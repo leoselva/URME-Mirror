@@ -17,7 +17,7 @@
 	container: document.querySelector("#container"),
       });
       const {renderer, scene, camera} = mindarThree;
-      const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
+      const light = new THREE.AmbientLight( 0x404040 );
       scene.add(light);
       const faceMesh = mindarThree.addFaceMesh();
       const texture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/leoselva/LSassets/4a9cfd2dc341c0975c94846ca39ce089a0653358/urme_overlay.png');
