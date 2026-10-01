@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene 
+      mindar-face 
+      embedded 
+      color-space="sRGB" 
+      renderer="colorManagement: true, physicallyCorrectLights" 
+      vr-mode-ui="enabled: false" 
+      device-orientation-permission-ui="enabled: false">
+      
+      <a-assets>
+        <!-- 1. The structural 3D face mesh provided by MindAR to project your texture onto -->
+        <a-asset-item id="headModel" src="https://jsdelivr.net"></a-asset-item>
+        
+        <!-- 2. Your custom 2D makeup PNG artwork sitting in your main GitHub directory -->
+        <img id="myMakeupTexture" src="your-makeup-artwork.png" crossorigin="anonymous">
+      </a-assets>
+
+      <a-camera active="false" position="0 0 0"></a-camera>
+      
+      <!-- Anchor index 1 targets the structural center of the face -->
+      
+        
+        <!-- This takes the face mesh structure and maps your 2D transparent image perfectly across it -->
+        <a-gltf-model 
+          src="#headModel" 
+          material="src: #myMakeupTexture; transparent: true; opacity: 1.0;" 
+          visible="true">
+        </a-gltf-model>
+        
+      
+    </a-scene>
+  </body>
+</html>
