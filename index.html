@@ -20,7 +20,7 @@
       const light = new THREE.HemisphereLight( 0xffffff, 0xbbbbff, 1 );
       scene.add(light);
       const faceMesh = mindarThree.addFaceMesh();
-      const texture = new THREE.TextureLoader().load('https://photos.app.goo.gl/4ipnpXX6jXecVpYB6');
+      const texture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/leoselva/LSassets/4a9cfd2dc341c0975c94846ca39ce089a0653358/urme_overlay.png');
       faceMesh.material.map = texture;
       faceMesh.material.transparent = true;
       faceMesh.material.needsUpdate = true;
